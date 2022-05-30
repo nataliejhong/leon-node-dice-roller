@@ -17,29 +17,30 @@ const server = http.createServer((req, res) => {
   }
 //Future todo: turn random rolling into a function
   else if (page == '/api') {
-    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.writeHead(200, { 'Content-Type': 'application/json '});
     // /api?sides=6
     // /api?fruit=bananas
     // /api?
     if('sides' in params){
-      if(params['student']== 'leon'){
         let random = Math.ceil(Math.random() * Math.abs(params["sides"]))
         const objToJson = {
           name: random,
         }
         res.end(JSON.stringify(objToJson));
-      }//student = leon
-      else if(params['student'] != 'leon'){
-        res.writeHead(200, {'Content-Type': 'application/json'});
-        const objToJson = {
-          name: "unknown",
-          status: "unknown",
-          currentOccupation: "unknown"
-        }
-        res.end(JSON.stringify(objToJson));
-      }//student != leon
-    }//student if
-  }//else if
+    }
+  }  
+//student = leon
+//       else if(params['student'] != 'leon'){
+//         res.writeHead(200, {'Content-Type': 'application/json'});
+//         const objToJson = {
+//           name: "unknown",
+//           status: "unknown",
+//           currentOccupation: "unknown"
+  //       }
+  //       res.end(JSON.stringify(objToJson));
+  //     }//student != leon
+  //   }//student if
+  // }//else if
   else if (page == '/css/style.css'){
     fs.readFile('css/style.css', function(err, data) {
       res.write(data);
